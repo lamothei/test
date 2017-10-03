@@ -7,8 +7,7 @@ var seedPosting = {
   "title": "Junior Developer",
   "blurb": "Looking for Capable C#.NET developer with experience writing SQL queries. Knowledge of Javascript is a plus",
   "languages": ["C#", "Javascript", "Powershell", "SQL"],
-  "frameworks": ["ASP.NET MVC", "React"],
-  "successfulCandidate": ""
+  "frameworks": ["ASP.NET MVC", "React"]
 };
 
 function seed () {
