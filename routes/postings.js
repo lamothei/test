@@ -16,22 +16,30 @@ router.post('/', function (req, res, next) {
   });
 });
 
-/* GET list job postings. */
+/* GET list all job postings */
 router.get('/', function (req, res, next) {
   JobPosting.find({}, function (err, postings) {
     if (err) {
-      res.status(500).json(err);
+      res.status(500).json({error: err});
     } else {
       res.status(200).json(postings);
     }
   });
 });
 
-/* PATCH update a posting*/
-/* Your code here */
+/* GET show job posting */
+router.get('/:_id', function (req, res, next) {
+  JobPosting.findById(req.params._id, function (err, posting) {
+    if (err) {
+      res.status(500).json({error: err});
+    } else {
+      res.status(200).json(posting);
+    }
+  });
+});
 
 /* DELETE remove a posting */
-router.delete('/:_id/delete', function (req, res, next) {
+router.delete('/:_id', function (req, res, next) {
   JobPosting.findByIdAndRemove(req.params._id, function (err, posting) {
     if (err) {
       res.status(500).json({error: err});
