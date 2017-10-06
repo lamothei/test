@@ -17,6 +17,7 @@ using the **postingId**.
 * [Git](https://git-scm.com/downloads)
 * [Github Account](https://github.com/)
 
+# Setup
 After installing the above softare fork this repository, clone it to your local machine
 and run the following commands:
 
