@@ -38,6 +38,37 @@ router.get('/:_id', function (req, res, next) {
   });
 });
 
+
+
+
+/* GET show job posting by posting id - Ian Lamothe */
+router.get('/findById/:_id', function (req, res, next) {
+    JobPosting.find({"postingId":req.params._id}, function (err, posting) {
+        if (err) {
+            res.status(500).json({error: err});
+        } else {
+            res.status(200).json(posting);
+        }
+    });
+});
+
+/* PUT Name in name field through search by posting id - Ian Lamothe */
+router.put('/addName', function (req, res, next) {
+
+    JobPosting.findOne({"postingId":req.body.postingId}, function (err, posting) {
+        if (err) return handleError(err);
+        console.log(posting);
+        posting.set({ name: req.body.name });
+        posting.save(function (err, updatedPosting) {
+            if (err) return handleError(err);
+            res.send(updatedPosting);
+        });
+    });
+});
+
+
+
+
 /* DELETE remove a posting */
 router.delete('/:_id', function (req, res, next) {
   JobPosting.findByIdAndRemove(req.params._id, function (err, posting) {
